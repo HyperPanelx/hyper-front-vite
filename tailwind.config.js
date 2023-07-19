@@ -1,14 +1,21 @@
 /** @type {import('tailwindcss').Config} */
-const plugin = require('tailwindcss/plugin')
+const colors=require('./colors');
+const plugin =   require('tailwindcss/plugin')
 
-export default {
-  content:  [
+module.exports = {
+  darkMode: 'class',
+  content: [
+    "./src/utils/**/*.{js,ts}",
+    "./src/plugins/**/*.{js,ts}",
+    "./src/App.vue",
+    "./src/error.vue",
     "./src/*.vue",
     "./src/components/**/*.{js,vue,ts}",
     "./src/composables/**/*.{js,vue,ts}",
     "./src/layouts/**/*.{js,vue,ts}",
     "./src/pages/**/*.vue",
     "./src/store/**/*.{js,ts}",
+    "./src/assets/**/*.scss",
   ],
   theme: {
     screens: {
@@ -179,15 +186,17 @@ export default {
       'full':'9999px'
     },
     fontFamily:{
-      main:['Montserrat','sans-serif']
+      main:['Montserrat','sans-serif'],
+      second:['Roboto Mono','monospace']
     },
     container:{
       center:true,
     },
 
     extend:{
-      colors:{
-
+      colors,
+      animation: {
+        'ping-slow': 'ping 2s linear infinite',
       }
     }
   },
@@ -199,17 +208,16 @@ export default {
         },
         'body':{
           overflowX:'hidden',
+          backgroundColor:'theme(colors["primary-light-2"])'
         },
         'h1,h2,h3,h4,h5,h6':{
           lineHeight:'1.5',
           fontWeight:'500',
-          color:'#333'
         },
         'p,span,a':{
           fontSize:'0.9rem',
           fontWeight:'500',
           lineHeight:'1.6',
-          color:'#333'
         }
       })
     })

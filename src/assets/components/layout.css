@@ -1,0 +1,17 @@
+@tailwind components;
+@layer components {
+    #content-wrapper{
+        @apply   relative;
+    }
+    #main-content{
+        @apply sm:ml-[260px]  transition-all relative dark:bg-[#343a40];
+    }
+
+    #main-content.v-shrink{
+        @apply sm:!ml-[70px]
+    }
+    #main-content.v-grow{
+        @apply sm:!ml-[260px]
+    }
+
+}

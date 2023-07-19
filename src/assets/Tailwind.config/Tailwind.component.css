@@ -1,0 +1,17 @@
+@import "../components/formkit.scss";
+@import "../components/card.css";
+@import "../components/conatiner.css";
+@import "../components/dropdown.css";
+@import "../components/FAB.css";
+@import "../components/form.css";
+@import "../components/general.css";
+@import "../components/layout.css";
+@import "../components/login.css";
+@import "../components/modal.css";
+@import "../components/navbar.css";
+@import "../components/sidebar.css";
+@import "../components/table.css";
+@import "../components/tooltip.css";
+@import "../components/transition.css";
+@tailwind components;
+
