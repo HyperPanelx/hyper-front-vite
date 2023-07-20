@@ -1,5 +1,4 @@
 <template>
-  <VBreadcrumb :pages="[{name:'Home',link:'DASHBOARD'},{name:'Users',link:'USERS'},{name:'Edit User'}]" />
 
   <row v-if="fetchFlag" class="mt-2">
     <column col="12">

@@ -1,5 +1,4 @@
 <template>
-  <VBreadcrumb :pages="[{name:'Home',link:'DASHBOARD'},{name:'Users',link:'USERS'},{name:'Create User'}]" />
   <row class="mt-3">
     <column col="12">
       <VCard  body-class="!p-2">

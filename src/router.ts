@@ -29,7 +29,11 @@ const routes:RouteRecordRaw[]=[
                 component:dashboard,
                 path:'dashboard',
                 name:'DASHBOARD',
-                meta:{title:'Dashboard | Hyper',status:true}
+                meta:{
+                    title:'Dashboard | Hyper',
+                    status:true,
+                    breadCrumb:null
+                }
             },
             {
                 component:usersIndex,
@@ -43,24 +47,41 @@ const routes:RouteRecordRaw[]=[
                         component:editUser,
                         path:'edit',
                         name:'EDIT_USER',
-                        meta:{title:'Edit User | Hyper',status:true}
+                        meta:{
+                            title:'Edit User | Hyper',
+                            status:true,
+                            breadCrumb:[{name:'Home',link:'DASHBOARD'},{name:'Users',link:'USERS'},{name:'Edit User'}]
+                        }
                     },
                     {
                         component:createUser,
                         path:'create',
                         name:'CREATE_USER',
-                        meta:{title:'Create User | Hyper',status:true},
+                        meta:{
+                            title:'Create User | Hyper',
+                            status:true,
+                            breadCrumb:[{name:'Home',link:'DASHBOARD'},{name:'Users',link:'USERS'},{name:'Create User'}]
+                        },
                     },{
                         component:usersList,
                         path:'',
                         name:'USERS',
-                        meta:{title:'Users | Hyper',status:true},
+                        meta: {
+                            title:'Users | Hyper',
+                            status:true,
+                            breadCrumb: [{name:'Home',link:'DASHBOARD'},{name:'Users'}]
+                        },
                     },
                     {
                         component:generateUser,
                         path:'generate',
                         name:'GENERATE_USER',
-                        meta:{title:'Generate Users | Hyper',status:true},
+                        meta:{
+                            title:'Generate Users | Hyper',
+                            status:true,
+                            breadCrumb: [{name:'Home',link:'DASHBOARD'},{name:'Users',link:'USERS'},{name:'Generate New Users'}]
+
+                        },
                     },
                 ]
             },
@@ -68,13 +89,21 @@ const routes:RouteRecordRaw[]=[
                 component:onlineUsers,
                 name:'ONLINE',
                 path:'online',
-                meta:{title:'Online Users | Hyper',status:true},
+                meta:{
+                    title:'Online Users | Hyper',
+                    status:true,
+                    breadCrumb:[{name:'Home',link:'DASHBOARD'},{name:'Online Users'}]
+                },
             },
             {
                 component:servers,
                 name:'SERVERS',
                 path:'servers',
-                meta:{title:'Servers | Hyper',status:true},
+                meta:{
+                    title:'Servers | Hyper',
+                    status:true,
+                    breadCrumb: [{name:'Home',link:'DASHBOARD'},{name:'Servers'}]
+                },
             }
         ]
     },
@@ -82,9 +111,22 @@ const routes:RouteRecordRaw[]=[
         component:login,
         name:'LOGIN',
         path:'/login',
-        meta:{title:'Login | Hyper',status:true},
+        meta:{
+            title:'Login | Hyper',
+            status:true,
+            breadCrumb:null
+        },
     },
-    { path: '/:pathMatch(.*)*', name: 'NotFound', component: error ,meta:{title:'Page not found!',status:true},},
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        component: error ,
+        meta:{
+            title:'Page not found!',
+            status:true,
+            breadCrumb:null
+        },
+    },
 
 ]
 ///////////////////////

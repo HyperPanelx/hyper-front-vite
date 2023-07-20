@@ -1,8 +1,5 @@
 <template>
-  <row >
-    <column col="12" md="6">
-      <VBreadcrumb :pages="[{name:'Home',link:'DASHBOARD'},{name:'Servers'}]" />
-    </column>
+  <row class="justify-end">
     <column col="12" md="6" class="flex justify-end">
       <button class="btn btn-primary" @click="goBack">
         back

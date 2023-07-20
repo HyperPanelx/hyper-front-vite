@@ -46,7 +46,7 @@ onMounted(()=>{
         ...p1,
       ]
     },initItem);
-      new Choices(selectEl.value,{
+      choices=new Choices(selectEl.value,{
       choices:selectData,
       allowHTML:true,
       searchEnabled:props.search,

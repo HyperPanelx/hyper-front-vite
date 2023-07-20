@@ -1,6 +1,5 @@
 <template>
   <template v-if="fetchTableDataFlag">
-    <VBreadcrumb :pages="[{name:'Home',link:'DASHBOARD'},{name:'Online Users'}]" />
     <row class="mt-2">
       <column col="12">
         <VCard  body-class="!p-0" class="!overflow-visible">
