@@ -167,8 +167,7 @@
 </template>
 
 <script setup lang="ts">
-import {copyText} from "../../utils/Helper";
-import VBreadcrumb from '../../components/global/VBreadcrumb.vue'
+import {copyText} from "../../utils/Helper"
 import VCard from '../../components/global/VCard.vue'
 import VBloader from '../../components/global/VBloader.vue'
 import VModal from '../../components/global/VModal.vue'

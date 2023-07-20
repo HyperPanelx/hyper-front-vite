@@ -39,7 +39,6 @@
 <script setup lang="ts">
 import Table from '../../components/Table/index.vue';
 import UsersTableRow from '../../components/Users/TableRow.vue'
-import  VBreadcrumb from '../../components/global/VBreadcrumb.vue';
 import VCard from '../../components/global/VCard.vue'
 import PaginationControl from '../../components/Pagination/Control.vue'
 import Pagination from '../../components/Pagination/index.vue'

@@ -47,7 +47,6 @@
 import lampOn from '/lamp-on.svg'
 import lampOff from '/lamp-off.svg'
 import VCard from '../components/global/VCard.vue'
-import VBreadcrumb from '../components/global/VBreadcrumb.vue'
 import {useServerStore} from "../composables/useStates";
 const {serverStore,getServerIP}=useServerStore()
 

@@ -92,7 +92,6 @@
 
 <script setup lang="ts">
 import VBloader from '../../components/global/VBloader.vue'
-import VBreadcrumb from '../../components/global/VBreadcrumb.vue'
 import VCard from '../../components/global/VCard.vue'
 import {useEdit} from "../../composables/users/useEdit";
 import {useServerStore} from "../../composables/useStates";
