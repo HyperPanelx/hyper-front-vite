@@ -3,7 +3,6 @@
   "private": true,
   "version": "1.2.1",
   "type": "module",
-  "config" : { "URL": "deded" },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
