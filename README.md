@@ -7,23 +7,28 @@
 
 ## Preview
 
-### Panel contains 4 main pages
-#### 1- Dashboard
-##### in this page as you can see is server and client status are live visible that is programmed by web socket.
+## Panel contains 4 main pages
+### 1- Dashboard
+#### in this page as you can see is server and client status are live visible that is programmed by web socket.
 <img alt="page 1" src="preview/p1.png">
 
-#### 2- Users
+### 2- Users
 
-##### this page belongs to users and its operation. You are able to 1- change the password 2- renew expired user 30  3- lock/unlock user 4- download user detail in text file 5- edit user detail 6- generate several user 7- create single user
+#### this page belongs to users and its operation. You are able to 1- change the password 2- renew expired user 30  3- lock/unlock user 4- download user detail in text file 5- edit user detail 6- generate several user 7- create single user
 <img alt="page 2" src="preview/p2.png">
 
-#### 3- Online users
-##### in this page is shown the status of online user, which you can disconnect their connection.
+### 3- Online users
+#### in this page is shown the status of online user, which you can disconnect their connection.
 <img alt="page 3" src="preview/p3.png">
 
-#### 4- Servers
-##### in this page you can see the available servers which you are able to switch between them.
+### 4- Servers
+#### in this page you can see the available servers which you are able to switch between them.
 <img alt="page 4" src="preview/p4.png">
+
+### Settings section
+#### by this float button you can configure your panel by opening a modal.
+<img alt="page 5" src="preview/p6.png">
+<img alt="page 6" src="preview/p5.png">
 
 
 ## Project structure
@@ -32,21 +37,20 @@
 ├── tailwind.config.js => tailwind class configs
 ├── colors.ts => project color palates
 ├── index.html
-├── webpack.dev.config.ts => webpack config for development
+├── vite.config.ts => vite config
 ├── webpack.prod.config.ts => webpack config for production
 ├── tsconfig.json => typescript config
 ├── postcss.config.js => postcss config for tailwind and bundling
 ├── formkit.config.ts => formkit plugins
-├── .d.ts => typescript decleration
-├── .babelrc => using babelrc for transfering js high level ecmascript code to low level for better proformance on older browser
 ├── package.json
+├── public => images
 ├── package-lock.json
 ├── README.md
 └── src
     ├── app.ts  => entry point file for webpack and packages
     ├── App.vue  => entry point vue component
     ├── router.ts  => page routing configs
-    ├── shims-vue.d.ts => typescript decleration file for vue components
+    ├── vite-env.d.ts => typescript decleration file for vue components
     └── utils
         ├── Data.ts => tabs data
         ├── Helper.ts => some helper function
