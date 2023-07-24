@@ -1,4 +1,4 @@
-import {IUser_Data} from "../utils/Types";
+import { IUser_Data} from "../utils/Types";
 import {usernameRegex,passwordRegex,bodyEncode} from "../utils/Helper";
 import {ref, reactive,inject} from "vue";
 import {VueCookies} from "vue-cookies";
@@ -33,20 +33,24 @@ export const useLogin=()=>{
                 headers:{
                     "Content-Type":"application/x-www-form-urlencoded"
                 },
-            }).then(response=>response.json()).then((response)=>{
-                if(response.detail){
-                    /// if username or password is wrong
-                    authStore.reset()
-                    errorMessage.value=response.detail
-                }else{
+            }).
+            then(response=>response.json()).
+            then((response)=>{
+                if(response.access_token || response.data.access_token){
+                    const token=response.access_token ? response.access_token : response.data.access_token;
+                    userData.rememberMe &&  $cookies?.set(cookieName as string,token);
+                    authStore.login(userData.username,token);
                     notify({
                         title: "Authorization",
                         text: "You have been logged in!",
                         type:'success'
                     });
-                    userData.rememberMe &&  $cookies?.set(cookieName as string,response.access_token);
-                    authStore.login(userData.username,response.access_token)
                     router.push({name:'DASHBOARD'})
+
+                }else{
+                    /// if username or password is wrong
+                    authStore.reset()
+                    errorMessage.value=response.message
                 }
             }).catch(err=>{
                 authStore.reset()
