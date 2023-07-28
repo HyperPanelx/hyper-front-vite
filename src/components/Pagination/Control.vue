@@ -1,8 +1,8 @@
 <template>
   <div class="py-2 px-1 shadow-[inset_0_0px_5px_0_rgba(0,0,0,0.1)] overflow-visible flex md:flex-row flex-col md:justify-between md:items-center">
     <FormKit type="form" id="control-pagination-form"  @submit="changePerPageHandler"  :actions="false" >
-      <div class="flex gap-0.5 items-center">
-        <div v-if="sort" class="w-9">
+      <div class="flex  items-center">
+        <div v-if="sort" class="w-9 mr-0.5">
           <VSelect
               @fire="sortHandler($event)"
               id="sort"
@@ -32,10 +32,10 @@
                 ]"
           />
         </div>
-        <span class="text-0.7 text-gray-600 dark:text-primary-light-1">Entries per page</span>
+        <span class="text-0.7 text-gray-600 dark:text-primary-light-1 ml-0.5">Entries per page</span>
       </div>
     </FormKit>
-    <div class="flex md:flex-row flex-col  md:mt-0 mt-2 items-center">
+    <div class="flex md:flex-row flex-col  md:mt-0 mt-1.5 items-center">
       <FormKit
           type="custom_placeholder"
           label="search username..."
@@ -46,7 +46,7 @@
 
       />
 
-      <div class="w-full md:ml-1 ml-0 mt-1 md:mt-0">
+      <div class="w-full md:ml-1 ml-0 mt-1 md:mt-0  ">
         <button @click="resetSearch" class="btn btn-indigo btn-md mr-1">
           Reset
         </button>

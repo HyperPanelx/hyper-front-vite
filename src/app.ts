@@ -18,6 +18,7 @@ library.add(faCircle,faCircleCheck,faXmark,faEye,faEyeSlash,faCircleExclamation,
 
 
 ///// dependencies
+import "nprogress/nprogress.css";
 import Notifications from '@kyvg/vue3-notification'
 import VueApexCharts from "vue3-apexcharts";
 import { plugin ,defaultConfig} from '@formkit/vue';

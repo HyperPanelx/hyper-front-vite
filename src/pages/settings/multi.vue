@@ -1,7 +1,7 @@
 <template>
   <FormKit id="addMultiServerForm" type="form" ref="addMultiServerForm"  @submit="addMultiServerHandler"  :actions="false" >
     <row class="px-1.5 pt-1">
-      <column md="6" col="12">
+      <column class="mb-0.8 sm:mb-0" md="6" col="12">
         <FormKit
             type="custom_text"
             label="ip address"
@@ -13,7 +13,7 @@
         />
 
       </column>
-      <column md="6" col="12">
+      <column class="mb-0.8 sm:mb-0" md="6" col="12">
         <FormKit
             type="custom_number"
             label="port"
@@ -25,8 +25,8 @@
         />
       </column>
     </row>
-    <row class="mt-0.7 px-1.5">
-      <column md="6" col="12">
+    <row class=" px-1.5">
+      <column class="mb-0.8 sm:mb-0" md="6" col="12">
         <FormKit
             validation-label="username"
             validation="required"
@@ -36,7 +36,7 @@
             label="username"
         />
       </column>
-      <column md="6" col="12">
+      <column class="mb-0.8 sm:mb-0" md="6" col="12">
         <FormKit
             validation-label="password"
             :validation="[['required'], ['matches', /^.{3,20}$/]]"

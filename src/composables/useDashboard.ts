@@ -8,10 +8,9 @@ import {dashboardStore} from "../store/dashboard";
 
 export const useDashboard=()=>{
     //// stores
-    const {serverStore,isEnable}=useServerStore()
+    const {serverStore,isEnable,getServerIP}=useServerStore()
     const {apiBase}=envVariable()
     const {token}=useAuthStore()
-    const {getServerIP}=useServerStore()
     /// states
     const fetchDashboardDataFlag=shallowRef<boolean>(false);
     const serverStatus=useChartRef<IUseChartRef|null>(null);
@@ -24,9 +23,9 @@ export const useDashboard=()=>{
     const changeServer =async (ev) => {
         const target=ev.target.value
         if(isEnable.value(target)){
-            clearTimeout(timer)
-            serverStore.changeServerIP('enable',target)
-            await triggerInitialFetchData()
+            clearTimeout(timer);
+            serverStore.changeServerIP('enable',target);
+            await getServerUsageData();
         }else{
             serverStore.changeServerIP('disable')
         }
@@ -58,7 +57,6 @@ export const useDashboard=()=>{
         document.body.style.overflowY='hidden'
         dashboardStore.showPreloaderFlag=true
         try {
-            await getServerUsageData();
             const request=await fetch(apiBase+`user-status?server=${getServerIP.value}`,{
                 headers:{
                     'Content-Type':'application/json',
@@ -76,8 +74,8 @@ export const useDashboard=()=>{
         }finally {
             dashboardStore.showPreloaderFlag=false
             document.body.style.overflowY='auto'
+            await getServerUsageData();
         }
-
     }
 
 

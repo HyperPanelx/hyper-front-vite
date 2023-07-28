@@ -1,5 +1,5 @@
 import {customRef, Ref} from 'vue'
-import {IServer_Usage_Response, IUseChartRef} from "../utils/Types";
+import {IResponse, IServer_Usage_Response, IUseChartRef} from "../utils/Types";
 import {bandWidthOption, serverStatusChartOption} from "../utils/Helper";
 
 
@@ -10,7 +10,7 @@ export function useChartRef<T extends IUseChartRef>(value:T):Ref<T> {
                 track()
                 return value
             },
-            set(newValue:IServer_Usage_Response|IServer_Usage_Response[0]) {
+            set(newValue:IServer_Usage_Response|IResponse<IServer_Usage_Response[0]>) {
                 if(newValue[1]){
                     const data=newValue as IServer_Usage_Response
                     const uploadSpeed=data[1]['Upload Speed']
@@ -49,27 +49,30 @@ export function useChartRef<T extends IUseChartRef>(value:T):Ref<T> {
                     } as T;
                     trigger()
                 }else{
-                    const data=newValue as IServer_Usage_Response[0]
-                    const wrappedData={
-                        cpu:data.cpu,
-                        ram:Number(Number(data.mem).toFixed(2)),
-                        disk:data.hdd,
-                    };
-                    value={
-                        cpu:{
-                            options:serverStatusChartOption(wrappedData.cpu,'CPU')?.chartOptions ?? null,
-                            series:serverStatusChartOption(wrappedData.cpu,'CPU')?.series ?? null
-                        },
-                        ram:{
-                            options:serverStatusChartOption(wrappedData.ram,'RAM')?.chartOptions ?? null,
-                            series:serverStatusChartOption(wrappedData.ram,'RAM')?.series ?? null
-                        },
-                        disk:{
-                            options:serverStatusChartOption(wrappedData.disk,'DISK')?.chartOptions ?? null,
-                            series:serverStatusChartOption(wrappedData.disk,'DISK')?.series ?? null
-                        }
-                    } as T;
-                    trigger()
+                    const server=newValue as IResponse<IServer_Usage_Response[0]>
+                    if(server.success){
+                        const wrappedData={
+                            cpu:server.data.cpu,
+                            ram:Number(Number(server.data.mem).toFixed(2)),
+                            disk:server.data.hdd,
+                        };
+                        value={
+                            cpu:{
+                                options:serverStatusChartOption(wrappedData.cpu,'CPU')?.chartOptions ?? null,
+                                series:serverStatusChartOption(wrappedData.cpu,'CPU')?.series ?? null
+                            },
+                            ram:{
+                                options:serverStatusChartOption(wrappedData.ram,'RAM')?.chartOptions ?? null,
+                                series:serverStatusChartOption(wrappedData.ram,'RAM')?.series ?? null
+                            },
+                            disk:{
+                                options:serverStatusChartOption(wrappedData.disk,'DISK')?.chartOptions ?? null,
+                                series:serverStatusChartOption(wrappedData.disk,'DISK')?.series ?? null
+                            }
+                        } as T;
+                        trigger()
+                    }
+                    
                 }
 
 

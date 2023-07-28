@@ -228,8 +228,8 @@ export const copyText = async (txt:string) => {
     }else{
         notify({
             type:'error',
-            title:'copy text is not allowed over http secure origin!',
-            duration:2
+            title:'copy text is not allowed over http! change domain to https.',
+            duration:3000
         })
     }
 }

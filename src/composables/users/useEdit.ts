@@ -30,7 +30,7 @@ export const useEdit=()=>{
     onMounted(async ()=>{
         dashboardStore.showPreloaderFlag=true
         fetchFlag.value=false
-       const username=route.query.username
+       const username=route.params.username
         fetch(apiBase+`user-get?username=${username}`,{
             headers:{
                 'Content-type':'application/json',

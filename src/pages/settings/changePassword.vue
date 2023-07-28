@@ -1,7 +1,7 @@
 <template>
   <FormKit  id="changePasswordForm" type="form" ref="changePasswordForm"  @submit="changePasswordSubmit"  :actions="false" >
     <row class="px-1.5 pt-1">
-      <column md="6" col="12">
+      <column class="mb-0.8 sm:mb-0" md="6" col="12">
 
         <FormKit
             type="custom_placeholder"
@@ -14,7 +14,7 @@
         />
 
       </column>
-      <column md="6" col="12">
+      <column class="mb-0.8 sm:mb-0" md="6" col="12">
         <FormKit
             type="custom_password"
             label="password"

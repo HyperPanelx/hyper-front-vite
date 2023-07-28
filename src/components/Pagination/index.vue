@@ -1,17 +1,17 @@
 <template>
   <div class="pagination-section">
-    <h6 class="text-gray-700 dark:text-primary-dark-3" >
+    <h6 class="text-gray-700 dark:text-primary-dark-3 sm:mb-0 mb-0.5" >
       <template v-if="paginationData.searchResultFlag || paginationData.currentPageData.length===0">Showing page 1 of 1
       </template>
       <template v-else>Showing page {{paginationData.currentPage}} of {{paginationData.allPages}}
       </template>
     </h6>
-    <div v-if="selectedUserToDelete.length>1 ">
+    <div v-if="selectedUserToDelete.length>1 " class="sm:my-0 my-0.5">
       <button @click="selectOperation('Delete Users')" class="btn btn-rose ">
         Delete selected users
       </button>
     </div>
-    <div v-if="selectedOnlineUserToKill.length>1 ">
+    <div v-if="selectedOnlineUserToKill.length>1 " class="sm:my-0 my-0.5">
       <button @click="selectOperation('Kill Connection')" class="btn btn-rose ">
         Kill selected users
       </button>

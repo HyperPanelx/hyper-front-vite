@@ -89,8 +89,8 @@ export const Table=defineStore('table',{
              /// token / .env
              const {token}=useAuthStore()
              const {apiBase,server_ip}=envVariable()
-
-             this.tableData={rows:[],titles:[]}
+            /////
+             this.tableData={rows:[],titles:['user info','traffic','User limitation','Contact info','Detail','status','operation']};
              this.fetchTableDataFlag=false
             dashboardStore.showPreloaderFlag=true
             fetch(apiBase+`user-get?username=all&server=${getServerIP.value}`,{
@@ -102,24 +102,21 @@ export const Table=defineStore('table',{
             then(response=>response.json()).
             then((response:IResponse<IUsers_Data>)=>{
                 if(response.success){
-                    this.tableData={
-                        titles:['user info','traffic','User limitation','Contact info','Detail','status','operation'],
-                        rows:response.data.map((item:IUser_Item,index:number)=>{
-                            return {...item,uid:index+1,server:item.server || server_ip,ordered_by:item.ordered_by || 'god'}
-                        })
-                    };
-                    this.trackExpiredUsers(response.data)
-                    this.fetchTableDataFlag=true
-                    dashboardStore.showPreloaderFlag=false
-
+                    this.tableData.rows=response.data.map((item:IUser_Item,index:number)=>{
+                        return {...item,uid:index+1,server:item.server || server_ip,ordered_by:item.ordered_by || 'god'}
+                    });
+                    this.trackExpiredUsers(response.data);
                 }else{
+                    this.tableData.rows=[]
                     console.log(response)
                 }
             }).
             catch(err=>{
                 console.log(err)
+                this.tableData.rows=[]
+            }).finally(()=>{
+                this.fetchTableDataFlag=true
                 dashboardStore.showPreloaderFlag=false
-
             });
         },
         async getOnlineUsers ()  {
@@ -128,7 +125,8 @@ export const Table=defineStore('table',{
             /// token / .env
             const {token}=useAuthStore()
             const {apiBase}=envVariable()
-            this.tableData={rows:[],titles:[]}
+            ////
+            this.tableData={rows:[],titles:['#','Username','IP Address','Management']}
             this.fetchTableDataFlag=false
             dashboardStore.showPreloaderFlag=true
             fetch(apiBase+`user-active?server=${getServerIP.value}`,{
@@ -140,27 +138,23 @@ export const Table=defineStore('table',{
             then(response=>response.json()).
             then((response)=>{
                 if(response.users){
-                    this.tableData={
-                        titles:['#','Username','IP Address','Management'],
-                        rows:response.users.map((item:string,index:number)=>{
-                            return {
-                                user:item,
-                                ip:'',
-                                uid:index+1
-                            }
-                        })
-                    }
+                    this.tableData.rows=response.users.map((item:string,index:number)=>{
+                        return {
+                            user:item,
+                            ip:'',
+                            uid:index+1
+                        }
+                    })
                 }else{
-                    this.tableData={
-                        titles:['#','Username','IP Address','Management'],
-                        rows:[]
-                    }
+                    this.tableData.rows=[]
                 }
-                this.fetchTableDataFlag=true
-                dashboardStore.showPreloaderFlag=false
             }).
             catch(err=>{
+                this.tableData.rows=[]
                 console.log(err)
+            }).
+            finally(()=>{
+                this.fetchTableDataFlag=true
                 dashboardStore.showPreloaderFlag=false
             });
         }

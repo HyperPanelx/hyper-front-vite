@@ -1,5 +1,7 @@
 import {createRouter,createWebHashHistory,RouteRecordRaw,createWebHistory} from "vue-router";
 import {authStore} from './store/auth'
+import {dashboardStore} from "./store/dashboard.ts";
+import NProgress from "nprogress";
 //// pages
 const MainIndex=()=>import(  './pages/index.vue')
 const dashboard=()=>import( './pages/dashboard.vue')
@@ -45,7 +47,7 @@ const routes:RouteRecordRaw[]=[
                 children:[
                     {
                         component:editUser,
-                        path:'edit',
+                        path:'edit/:username',
                         name:'EDIT_USER',
                         meta:{
                             title:'Edit User | Hyper',
@@ -143,7 +145,15 @@ const router=createRouter({
 
 
 router.afterEach((to)=>{
-    (document.title as any)=to.meta.title
+    (document.title as any)=to.meta.title;
+    if (!to.hash || !to.query) {
+        NProgress.done();
+    }
+
+    if(to.name==='CREATE_USER' || to.name==='GENERATE_USER'){
+        dashboardStore.showPreloaderFlag=false
+        document.body.style.overflowY='auto'
+    }
 })
 
 //@ts-ignore
@@ -157,6 +167,10 @@ router.beforeEach((to,from,next)=>{
             next()
         }
     }
+    if (!to.hash || !to.query) {
+        NProgress.start();
+    }
+
 })
 
 export default router

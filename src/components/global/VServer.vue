@@ -5,12 +5,14 @@
 <script setup lang="ts">
 import Choices from "choices.js";
 import {useServerStore} from "../../composables/useStates";
-import {onMounted, ref, watch} from "vue";
-const selectEl=ref(null)
-const {fetchServerListsFlag,getHostList,serverStore}=useServerStore()
+import {onMounted,  watch,shallowRef} from "vue";
+//////////////////////
 const emit=defineEmits<{
   (e:'fire',value:any):void
 }>();
+const selectEl=shallowRef(null);
+const {fetchServerListsFlag,getHostList,serverStore}=useServerStore()
+let choice=null;
 ////////////////////////////////////////////////////////
 const initServerListSelect = () => {
   if(selectEl.value && fetchServerListsFlag.value) {
@@ -21,13 +23,31 @@ const initServerListSelect = () => {
         id:index+1,
         selected: item===serverStore.server_ip,
       }
-    })
+    });
+    choice && choice.destroy();
     new Choices(selectEl.value,{
       choices:selectData,
       allowHTML:true,
       searchChoices:false,
       searchEnabled:false
     });
+  }else if(selectEl.value && !fetchServerListsFlag.value){
+    const selectData=[
+      {
+        value:'fetching data...',
+        label:`<p class="animate-pulse">fetching data...</p>`,
+        id:0,
+        selected:true,
+        disabled: true
+      }
+    ]
+    choice=new Choices(selectEl.value,{
+      choices:selectData,
+      allowHTML:true,
+      searchChoices:false,
+      searchEnabled:false
+    });
+
   }
 }
 
@@ -64,7 +84,5 @@ onMounted(()=>{
   .choices__list--dropdown .choices__item--selectable.is-highlighted, .choices__list[aria-expanded] .choices__item--selectable.is-highlighted{
     @apply dark:!bg-[#333] !bg-secondary-light-2 !text-secondary-light-1 transition-all
   }
-
-
 }
 </style>

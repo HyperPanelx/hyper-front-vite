@@ -44,9 +44,11 @@ export const useAuth=()=>{
                     //// store username and token
                     /// islogin is for middleware
                     authStore.login(response.username,token)
+                    /// get servers list
                     router.push({name:'DASHBOARD'})
                 }
-            }).catch(err=>{
+            }).
+            catch(err=>{
                 //// if status 401 user is not valid
                 console.log(err)
                 authStore.reset()

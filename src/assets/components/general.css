@@ -9,4 +9,5 @@
   .category-card{
     @apply py-[0.25rem] px-0.5 rounded-6 text-[0.75rem] font-600 block w-4.5 ;
   }
+
 }

@@ -1,7 +1,7 @@
 <template>
   <FormKit id="createAdminUserForm" type="form" ref="createAdminUserForm"  @submit="createAdminUserFormSubmit"  :actions="false" >
       <row class="px-1.5 pt-1">
-        <column md="6" col="12">
+        <column class="mb-0.8 sm:mb-0" md="6" col="12">
           <FormKit
               type="custom_text"
               label="username"
@@ -11,7 +11,7 @@
               validation="required"
           />
         </column>
-        <column md="6" col="12">
+        <column class="mb-0.8 sm:mb-0" md="6" col="12">
           <FormKit
               type="custom_password"
               label="password"

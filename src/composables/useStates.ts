@@ -11,11 +11,12 @@ import {storeToRefs} from "pinia";
 export const envVariable=()=>{
     const apiBase:string|undefined=import.meta.env.APP_API_BASE || 'http://localhost/';
     const cookieName:string|undefined=import.meta.env.APP_COOKIE_NAME || 'fb69cda06c628';
-    const appVersion:string|undefined=import.meta.env.APP_VERSION || '1.0.0';
-    const server_ip:string|undefined=import.meta.env.APP_SERVER_IP || 'localhost'
+    const appVersion:string|undefined=import.meta.env.APP_VERSION || '1.2.2';
+    const server_ip:string|undefined=import.meta.env.APP_SERVER_IP || 'localhost';
+    const ssh_port:string|undefined=import.meta.env.APP_SSH_PORT || 22;
 
     return{
-        apiBase,cookieName,appVersion,server_ip
+        apiBase,cookieName,appVersion,server_ip,ssh_port
     }
 }
 

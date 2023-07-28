@@ -3,10 +3,10 @@
 
     <row class="mb-1.5">
       <column col="12" md="5" class="flex items-center">
-        <p class="text-gray-700 text-0.9 mr-0.5 dark:text-primary-dark-3">
+        <p class="text-gray-700 sm:text-0.9 text-0.8 mr-0.5 dark:text-primary-dark-3">
           Switch Server:
         </p>
-        <div class="w-15">
+        <div class="sm:w-[15.5rem] w-14">
           <VServer @fire="changeServer($event)"/>
         </div>
 

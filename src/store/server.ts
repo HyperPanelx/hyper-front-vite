@@ -55,7 +55,7 @@ export const Server=defineStore('server',{
             }
         },
         fetchServersList(){
-            const {apiBase,server_ip}=envVariable();
+            const {apiBase,server_ip,ssh_port}=envVariable();
             const {token}=useAuthStore();
             //////////////////////////////////////////////////
             this.fetchServerListFlag=false
@@ -71,7 +71,7 @@ export const Server=defineStore('server',{
                     this.serversList=[
                         {
                             host:server_ip,
-                            port:22,
+                            port:ssh_port,
                             status:'enable',
                         },
                         ...response.data

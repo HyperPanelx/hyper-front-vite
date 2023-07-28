@@ -31,3 +31,11 @@ body .scroller{
 body.dark .apexcharts-text.apexcharts-datalabel-label , body.dark .apexcharts-text.apexcharts-datalabel-value{
   fill: #fff!important;
 }
+#nprogress .bar{
+  background: #727cf5 !important;
+  height: 3px !important;
+}
+#nprogress .spinner{
+  display: none;
+  visibility: hidden;
+}

@@ -18,9 +18,9 @@
     </div>
   </td>
   <td>
-    <div class="p-1">
+    <div class="sm:p-1">
       <p v-if="ip" class="text-center dark:text-primary-light-1">{{ip}}</p>
-      <p v-else class="text-0.7 dark:text-primary-dark-3 text-gray-700 text-center">No Data.</p>
+      <p v-else class="sm:text-0.7 text-0.6 dark:text-primary-dark-3 text-gray-700 text-center">No Data.</p>
     </div>
   </td>
   <td>

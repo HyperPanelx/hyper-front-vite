@@ -8,7 +8,7 @@
         <template v-slot:body>
           <FormKit id="createSingleUserForm" type="form" name="createSingleUserForm" ref="createSingleUserForm"  @submit="createUserFormSubmit"  :actions="false" >
             <row  class="mt-0.5">
-              <column col="12" md="4">
+              <column class="mb-0.8 sm:mb-0" col="12" md="4">
                 <FormKit
                     type="custom_text"
                     label="username (required)"
@@ -19,7 +19,7 @@
                 />
 
               </column>
-              <column col="12" md="4">
+              <column class="mb-0.8 sm:mb-0" col="12" md="4">
                 <FormKit
                     type="custom_text"
                     label="email"
@@ -30,7 +30,7 @@
                     validation="email"
                 />
               </column>
-              <column col="12" md="4">
+              <column class="mb-0.8 sm:mb-0" col="12" md="4">
                 <FormKit
                     type="custom_text"
                     label="phone (required)"
@@ -42,8 +42,8 @@
                 />
               </column>
             </row>
-            <row class="mt-2 mb-1">
-              <column col="12" md="4">
+            <row class="sm:mt-2 sm:mb-1">
+              <column class="mb-0.8 sm:mb-0" col="12" md="4">
                 <FormKit
                     type="custom_number"
                     label="Multi user (required)"
@@ -55,7 +55,7 @@
                     min="1"
                 />
               </column>
-              <column col="12" md="4">
+              <column class="mb-0.8 sm:mb-0" col="12" md="4">
                 <FormKit
                     type="custom_date"
                     label="Expiration date"
@@ -65,7 +65,7 @@
                     :validation="`required|date_after:${currentYear}-${currentMonth}-${currentDate}`"
                 />
               </column>
-              <column col="12" md="4">
+              <column class="mb-1 sm:mb-0" col="12" md="4">
                 <FormKit
                     type="custom_text"
                     label="traffic"
@@ -85,7 +85,7 @@
               </column>
             </row>
             <row >
-              <column col="12" md="4">
+              <column class="mb-0.8 sm:mb-0" col="12" md="4">
                 <FormKit
                     type="custom_text"
                     label="Referral"
@@ -93,7 +93,7 @@
                     name="referral"
                 />
               </column>
-              <column col="12" md="4">
+              <column class="mb-0.8 sm:mb-0" col="12" md="4">
                 <FormKit
                     type="custom_text"
                     label="Telegram id (required)"
@@ -104,7 +104,7 @@
                 />
 
               </column>
-              <column col="12" md="4">
+              <column class="mb-0.8 sm:mb-0" col="12" md="4">
                 <FormKit
                     rows="3"
                     type="custom_area"
