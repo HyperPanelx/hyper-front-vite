@@ -19,6 +19,7 @@
 
 <script setup lang="ts">
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import {watchEffect} from "vue";
 
 const props=defineProps<{
   modelValue:boolean,
@@ -27,6 +28,7 @@ const props=defineProps<{
 const emit=defineEmits<{
   (e:'update:modelValue',value:boolean):void,
   (e:'close'):void,
+  (e:'open'):void,
 }>();
 const close = () => {
   if(props.fadeOutside){
@@ -39,7 +41,9 @@ const closeByIcon = () => {
   emit('update:modelValue',false)
   emit('close')
 }
-
+watchEffect(()=>{
+  props.modelValue && emit('open')
+})
 
 
 </script>

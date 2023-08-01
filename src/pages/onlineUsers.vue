@@ -18,7 +18,7 @@
                   v-for="(item,index) in paginationData.currentPageData">
                 <OnlineTableRow
                     :user="item.user"
-                    :ip="item.ip"
+                    :connected="item.connected"
                     :uid="item.uid"
                     :index="index"
                 />

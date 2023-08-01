@@ -126,7 +126,7 @@ export const Table=defineStore('table',{
             const {token}=useAuthStore()
             const {apiBase}=envVariable()
             ////
-            this.tableData={rows:[],titles:['#','Username','IP Address','Management']}
+            this.tableData={rows:[],titles:['#','Username','Connections','Management']}
             this.fetchTableDataFlag=false
             dashboardStore.showPreloaderFlag=true
             fetch(apiBase+`user-active?server=${getServerIP.value}`,{
@@ -138,10 +138,11 @@ export const Table=defineStore('table',{
             then(response=>response.json()).
             then((response)=>{
                 if(response.users){
-                    this.tableData.rows=response.users.map((item:string,index:number)=>{
+                    const usersEntries:any=Object.entries(response.users);
+                    this.tableData.rows=usersEntries.map((item:string,index:number)=>{
                         return {
-                            user:item,
-                            ip:'',
+                            user:item[0],
+                            connected:item[1],
                             uid:index+1
                         }
                     })

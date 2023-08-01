@@ -19,12 +19,16 @@
   </td>
   <td>
     <div class="sm:p-1">
-      <p v-if="ip" class="text-center dark:text-primary-light-1">{{ip}}</p>
+      <p v-if="connected" class="text-center dark:text-primary-light-1">{{connected}}</p>
       <p v-else class="sm:text-0.7 text-0.6 dark:text-primary-dark-3 text-gray-700 text-center">No Data.</p>
     </div>
   </td>
-  <td>
-    <Kill :user="user" :uid="uid" />
+  <td class="w-[30%]">
+    <div class="flex items-center justify-center">
+      <Kill :user="user" :uid="uid" />
+      <Detail :user="user" />
+    </div>
+
   </td>
   <td class="absolute top-0 left-0 w-full h-full z-[5]" @click="checkboxHandler" colspan="0"></td>
 
@@ -32,11 +36,12 @@
 
 <script setup lang="ts">
 import Check from './Check.vue'
-import Kill from './Kill.vue'
+import Kill from './Kill.vue';
+import Detail from "./Detail.vue";
 import {useCheckBox} from "../../composables/online/useCheckBox";
 const props=defineProps<{
   user:string,
-  ip:string,
+  connected:string,
   index:number,
   uid:number
 }>();
